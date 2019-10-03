@@ -1,0 +1,84 @@
+{
+  "name": "gatsby-storybook-jest-stater",
+  "description": "A Gatsby starter based on default with added Storybook and Jest configurations",
+  "version": "1.0.0",
+  "author": "Mathspy <mathspy257@gmail.com>",
+  "dependencies": {
+    "gatsby": "^2.1.30",
+    "gatsby-plugin-react-helmet": "^3.0.9",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-helmet": "^5.2.0"
+  },
+  "keywords": [
+    "gatsby",
+    "storybook",
+    "jest"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --ignore-path .gitignore --write '**/*.js'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.3.4",
+    "@storybook/addon-actions": "^5.0.1",
+    "@storybook/addon-links": "^5.0.1",
+    "@storybook/addons": "^5.0.1",
+    "@storybook/react": "^5.0.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.4.0",
+    "babel-runtime": "^6.26.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "enzyme-to-json": "^3.3.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.4.0",
+    "prettier": "^1.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathspy/gatsby-storybook-jest-stater"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "<rootDir>/jest-preprocess.js"
+    },
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
+      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
+    ],
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "/.cache/"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(gatsby)/)"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "globals": {
+      "__PATH_PREFIX__": ""
+    },
+    "setupFiles": [
+      "<rootDir>/loadershim.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
+}
