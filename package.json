@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-storybook-jest-stater",
-  "description": "A Gatsby starter based on default with added Storybook and Jest configurations",
+  "name": "WINGFIELD_WEB_FRONTEND_APP",
+  "description": "Marking tennis smart",
   "version": "1.0.0",
-  "author": "Mathspy <mathspy257@gmail.com>",
+  "author": "Musa <md.musa@my-wingfield.com>",
   "dependencies": {
     "gatsby": "^2.1.30",
     "gatsby-plugin-react-helmet": "^3.0.9",
@@ -15,8 +15,9 @@
     "storybook",
     "jest"
   ],
-  "license": "MIT",
+  "license": "ISC",
   "scripts": {
+    "commit": "git-cz",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --ignore-path .gitignore --write '**/*.js'",
@@ -24,7 +25,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "standard --fix"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -38,17 +40,27 @@
     "@storybook/react": "^5.0.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.4.0",
+    "babel-loader": "^8.0.5",
     "babel-runtime": "^6.26.0",
+    "commitizen": "^3.1.1",
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
     "enzyme-to-json": "^3.3.5",
+    "husky": "^2.7.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.4.0",
-    "prettier": "^1.16.4"
+    "lint-staged": "^8.1.6",
+    "prettier": "^1.16.4",
+    "standard": "^12.0.1",
+    "standard-version": "^5.0.2",
+    "wait-on": "^3.2.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mathspy/gatsby-storybook-jest-stater"
+    "url": "https://github.com/iammdmusa/test-gatsby.git"
   },
   "jest": {
     "transform": {
@@ -79,6 +91,36 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "export CI=true && lint-staged && npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.{css,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "prettier --write",
+      "standard --fix",
+      "git add"
+    ]
+  },
+  "standard": {
+    "globals": [
+      "jest",
+      "it",
+      "expect",
+      "test",
+      "describe"
     ]
   }
 }

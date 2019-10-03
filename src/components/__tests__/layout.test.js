@@ -11,9 +11,9 @@ import Header from '../header'
 const data = {
   site: {
     siteMetadata: {
-      title: 'test title',
-    },
-  },
+      title: 'test title'
+    }
+  }
 }
 
 describe('Layout', () => {
@@ -30,11 +30,11 @@ describe('Layout', () => {
   it('should contain the children passed to it', () => {
     const wrapper = shallow(
       <Layout data={data}>
-        <div className="test-div" />
+        <div className='test-div' />
       </Layout>
     )
 
-    expect(wrapper.contains(<div className="test-div" />)).toBe(true)
+    expect(wrapper.contains(<div className='test-div' />)).toBe(true)
   })
 
   it('should render header with title passed inside data', () => {
